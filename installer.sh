@@ -32,3 +32,14 @@ dnf install https://rpms.remirepo.net/enterprise/remi-release-8.rpm -y
 
 dnf module enable php:remi-7.4
 dnf install php php-cli php-common php-devel -y
+
+curl -o /etc/yum.repos.d/mongodb-org-5.0.repo https://raw.githubusercontent.com/screamolic/centoswebserv8/main/mongodb-org-5.0.repo
+sudo yum install -y mongodb-org
+
+
+
+sudo iptables -I INPUT -p tcp -m tcp --dport 80 -j ACCEPT
+sudo iptables -I INPUT -p tcp -m tcp --dport 443 -j ACCEPT
+service httpd start
+
+
